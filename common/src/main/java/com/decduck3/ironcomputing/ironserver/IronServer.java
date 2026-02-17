@@ -15,16 +15,15 @@ import java.nio.ByteOrder;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.Objects;
 import java.util.concurrent.TimeUnit;
 
 public class IronServer {
     public static IronServer INSTANCE;
-
-    public final IronServerPacketSync<String, Main.RustJava> PACKET_SYNCER = new IronServerPacketSync<>();
+    public static final IronServerPacketSync<String, Main.RustJava> PACKET_SYNCER = new IronServerPacketSync<>();
 
     public static final PingPacketInterface PING_PACKET_INTERFACE = new PingPacketInterface();
-
-    private final PacketInterface<?, ?>[] packetInterfaces = new PacketInterface[]{PING_PACKET_INTERFACE};
+    private static final PacketInterface<?, ?>[] packetInterfaces = new PacketInterface[]{PING_PACKET_INTERFACE};
 
     private final Process SERVER_PROCESS;
     private final Thread SERVER_RECIEVE_THREAD;
@@ -122,6 +121,7 @@ public class IronServer {
     }
 
     public void writePacket(ByteString packet) throws IOException {
+        if(!IronComputing.isServer()) return;
         tryConnectSocket();
         ByteBuffer buffer = ByteBuffer.allocate(8 + packet.size());
         buffer.order(ByteOrder.LITTLE_ENDIAN);

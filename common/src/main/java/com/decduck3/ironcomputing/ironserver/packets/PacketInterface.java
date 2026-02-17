@@ -1,10 +1,12 @@
 package com.decduck3.ironcomputing.ironserver.packets;
 
+import com.decduck3.ironcomputing.IronComputing;
 import com.decduck3.ironcomputing.ironserver.IronServer;
 import com.decduck3.ironcomputing.proto.Main;
 import com.google.protobuf.ByteString;
 
 import java.io.IOException;
+import java.util.Objects;
 import java.util.UUID;
 import java.util.concurrent.TimeUnit;
 
@@ -24,6 +26,8 @@ public abstract class PacketInterface<Q, R> {
 
     public R send(Q message, boolean response) throws PacketError, IOException {
         if(IronServer.INSTANCE == null) return null;
+        if(!IronComputing.isServer()) return null;
+
         ByteString serialized = serialize(message);
         Main.MessageType messageType = messageType();
         String messageId = UUID.randomUUID().toString();

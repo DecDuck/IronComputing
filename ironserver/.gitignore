@@ -1,0 +1,6 @@
+*.wasm
+/src/genr/*.rs
+!/src/genr/mod.rs
+/target/
+/src/proto/
+!/src/proto/.gitkeep

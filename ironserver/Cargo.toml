@@ -1,0 +1,20 @@
+[package]
+name = "ironserver"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+anyhow = "1.0.101"
+dashmap = "6.1.0"
+log = "0.4.29"
+protobuf = "3.7.2"
+simple_logger = "5.1.0"
+tokio = { version = "1.49.0", features = ["rt-multi-thread", "macros", "fs"] }
+uuid = { version = "1.21.0", features = ["v4"] }
+waitmap = "1.1.0"
+wasmtime = { version = "41.0.3", features = ["async"] }
+wasmtime-wasi = "41.0.3"
+wit-component = "0.245.1"
+
+[build-dependencies]
+protobuf-codegen = "3.7.2"

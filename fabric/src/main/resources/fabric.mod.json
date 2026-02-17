@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "id": "ironcomputing",
+  "version": "${version}",
+  "name": "IronComputing",
+  "description": "Adds computers and related equipment that runs WASM binaries that can interact with the world.",
+  "authors": [
+    "DecDuck"
+  ],
+  "contact": {
+    "homepage": ""
+  },
+  "license": "All-Rights-Reserved",
+  "icon": "assets/ironcomputing/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "com.decduck3.ironcomputing.fabric.IroncomputingFabric"
+    ],
+    "client": [
+      "com.decduck3.ironcomputing.fabric.client.IroncomputingFabricClient"
+    ]
+  },
+  "mixins": [
+    "ironcomputing.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.18.4",
+    "minecraft": "~1.20.1",
+    "java": ">=17",
+    "architectury": ">=9.2.14",
+    "fabric-api": "*"
+  },
+  "suggests": {
+    "another-mod": "*"
+  }
+}

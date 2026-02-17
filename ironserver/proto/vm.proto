@@ -1,0 +1,14 @@
+syntax = "proto3";
+package com.decduck3.ironcomputing.proto;
+
+message VMConfiguration {
+  optional string vm_id = 1;
+  string firmware_id = 2;
+  uint64 ram_size = 3;
+  repeated string harddisk_ids = 4;
+
+}
+
+message HardDiskConfiguration {
+  uint64 size = 1;
+}

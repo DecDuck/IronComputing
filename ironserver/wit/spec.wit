@@ -1,0 +1,5 @@
+package ironcomputing:vm;
+
+world vm {
+    export main: async func();
+}

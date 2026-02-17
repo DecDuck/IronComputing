@@ -1,0 +1,33 @@
+syntax = "proto3";
+package com.decduck3.ironcomputing.proto;
+
+enum MessageType {
+  ERROR = 0;
+
+  // Uploads and deletes WASM binaries
+  UPLOAD_FIRMWARE = 1;
+  DELETE_FIRMWARE = 2;
+
+  // Create/configure/delete
+  CREATE_VM = 3;
+  CONFIGURE_VM = 4;
+  DELETE_VM = 5;
+
+  // Create or delete hard drives
+  CREATE_HARDDISK = 6;
+  DELETE_HARDDISK = 7;
+
+  PING = 8;
+}
+
+message JavaRust {
+  string id = 1;
+  MessageType message_type = 2;
+  bytes data = 3;
+}
+
+message RustJava {
+  string id = 1;
+  MessageType message_type = 2;
+  bytes data = 3;
+}

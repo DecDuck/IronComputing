@@ -1,8 +1,10 @@
 package com.decduck3.ironcomputing;
 
 import com.decduck3.ironcomputing.block.IronComputingBlocks;
+import com.decduck3.ironcomputing.gui.IronComputingMenuTypes;
 import com.decduck3.ironcomputing.ironserver.IronServer;
 import com.decduck3.ironcomputing.item.IronComputingItems;
+import com.decduck3.ironcomputing.tabs.IronComputingTabs;
 import dev.architectury.event.events.common.LifecycleEvent;
 import net.minecraft.server.MinecraftServer;
 import org.slf4j.Logger;
@@ -20,10 +22,13 @@ public final class IronComputing {
         // Write common init code here.
         LOGGER.info("IronComputing starting up...");
 
+        IronComputingTabs.init();
         IronComputingBlocks.init();
         IronComputingItems.init();
+        IronComputingMenuTypes.init();
 
         LifecycleEvent.SERVER_STARTING.register(minecraftServer -> IronServer.INSTANCE = IronServer.createIronServer());
+
     }
 
     public static boolean isServer() {

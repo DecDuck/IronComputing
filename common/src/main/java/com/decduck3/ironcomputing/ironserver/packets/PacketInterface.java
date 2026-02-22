@@ -38,7 +38,7 @@ public abstract class PacketInterface<Q, R> {
 
         if (!response) return null;
 
-        Main.RustJava packetRaw = IronServer.INSTANCE.PACKET_SYNCER.get(messageId, 5000, TimeUnit.DAYS);
+        Main.RustJava packetRaw = IronServer.PACKET_SYNCER.get(messageId, 5000, TimeUnit.DAYS);
         if (packetRaw.getMessageType() == Main.MessageType.ERROR) {
             throw new PacketError(packetRaw.getData().toString());
         }

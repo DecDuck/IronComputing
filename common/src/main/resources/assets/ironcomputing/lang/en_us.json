@@ -1,3 +1,16 @@
 {
-  "block.ironcomputing.computer_case": "Computer Case"
+  "block.ironcomputing.computer_case": "Computer Case",
+
+  "item.ironcomputing.cpu_model_minimal": "CPU (Minimal)",
+  "item.ironcomputing.cpu_model_wasip1": "CPU (Wasip1)",
+  "item.ironcomputing.cpu_model_wasip2": "CPU (Wasip2)",
+
+  "item.ironcomputing.ram_size_1": "RAM (64kb)",
+  "item.ironcomputing.ram_size_8": "RAM (512kb)",
+  "item.ironcomputing.ram_size_32": "RAM (2mB)",
+  "item.ironcomputing.ram_size_64": "RAM (4mB)",
+  "item.ironcomputing.ram_size_128": "RAM (8mB)",
+
+  "tabs.ironcomputing.components": "IronComputing Components",
+  "container.ironcomputing.computer_case": "Computer Case"
 }

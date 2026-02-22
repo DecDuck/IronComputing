@@ -1,4 +1,4 @@
-use std::{fs::create_dir_all, path::PathBuf, sync::LazyLock};
+use std::{fs::create_dir_all, path::PathBuf, sync::LazyLock, thread, time::Duration};
 
 use log::{info, warn};
 use protobuf::Message;
@@ -118,7 +118,10 @@ async fn main() -> ! {
     loop {
         match real_main().await {
             Ok(_) => (),
-            Err(err) => warn!("error while running app: {:?}", err),
+            Err(err) => {
+                warn!("error while running app: {:?}", err);
+                thread::sleep(Duration::from_millis(500));
+            },
         }
     }
 }

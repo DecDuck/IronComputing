@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "ironcomputing:item/cpu_model_wasip1"
+  }
+}

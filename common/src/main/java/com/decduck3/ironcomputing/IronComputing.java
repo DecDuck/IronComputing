@@ -4,9 +4,12 @@ import com.decduck3.ironcomputing.block.IronComputingBlocks;
 import com.decduck3.ironcomputing.gui.IronComputingMenuTypes;
 import com.decduck3.ironcomputing.ironserver.IronServer;
 import com.decduck3.ironcomputing.item.IronComputingItems;
+import com.decduck3.ironcomputing.network.IronComputingNetwork;
 import com.decduck3.ironcomputing.tabs.IronComputingTabs;
+import dev.architectury.event.events.client.ClientLifecycleEvent;
 import dev.architectury.event.events.common.LifecycleEvent;
-import net.minecraft.server.MinecraftServer;
+import dev.architectury.platform.Platform;
+import net.fabricmc.api.EnvType;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -16,7 +19,7 @@ public final class IronComputing {
     public static final String MOD_ID = "ironcomputing";
     public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
 
-    private static final String SERVER_THREAD_NAME = "Server thread";
+    private static final String CLIENT_THREAD_NAME = "Render thread";
 
     public static void init() {
         // Write common init code here.
@@ -26,12 +29,16 @@ public final class IronComputing {
         IronComputingBlocks.init();
         IronComputingItems.init();
         IronComputingMenuTypes.init();
+        IronComputingNetwork.init();
 
         LifecycleEvent.SERVER_STARTING.register(minecraftServer -> IronServer.INSTANCE = IronServer.createIronServer());
-
+        LifecycleEvent.SERVER_STOPPING.register(minecraftServer -> IronServer.INSTANCE.destroy());
+        if (Platform.getEnv() == EnvType.CLIENT) {
+            ClientLifecycleEvent.CLIENT_STARTED.register(minecraft -> System.setProperty("java.awt.headless", "false"));
+        }
     }
 
     public static boolean isServer() {
-        return Objects.equals(Thread.currentThread().getName(), SERVER_THREAD_NAME);
+        return !Objects.equals(Thread.currentThread().getName(), CLIENT_THREAD_NAME);
     }
 }

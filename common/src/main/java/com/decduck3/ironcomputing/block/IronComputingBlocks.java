@@ -15,9 +15,11 @@ public class IronComputingBlocks {
     private static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(IronComputing.MOD_ID, Registries.BLOCK);
 
     public static RegistrySupplier<ComputerCaseBlock> COMPUTER_CASE_BLOCK;
+    public static RegistrySupplier<FirmwareStationBlock> FIRMWARE_STATION_BLOCK;
 
     public static void init() {
         COMPUTER_CASE_BLOCK = registerBlock("computer_case", ComputerCaseBlock::new);
+        FIRMWARE_STATION_BLOCK = registerBlock("firmware_station", FirmwareStationBlock::new);
 
         BLOCKS.register();
     }

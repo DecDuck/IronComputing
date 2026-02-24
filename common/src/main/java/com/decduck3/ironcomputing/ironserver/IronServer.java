@@ -6,6 +6,10 @@ import com.decduck3.ironcomputing.ironserver.packets.PingPacketInterface;
 import com.decduck3.ironcomputing.proto.Main;
 import com.google.protobuf.ByteString;
 import dev.architectury.platform.Platform;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.nbt.Tag;
+import net.minecraft.tags.ItemTags;
+import net.minecraft.world.item.ItemStack;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -133,7 +137,13 @@ public class IronServer {
     public void destroy() {
         this.shutdown = true;
         SERVER_PROCESS.destroyForcibly();
-
     }
 
+    public void uploadROM(byte[] contents, ItemStack output) {
+        if(!IronComputing.isServer()) return;
+        IronComputing.LOGGER.info("creating ROM of length {}", contents.length);
+
+        CompoundTag tag = output.getOrCreateTag();
+        tag.putString("romId", "DJASKDJAKJSD");
+    }
 }

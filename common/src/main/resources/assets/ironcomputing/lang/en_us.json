@@ -1,5 +1,6 @@
 {
   "block.ironcomputing.computer_case": "Computer Case",
+  "block.ironcomputing.firmware_station": "Firmware Station",
 
   "item.ironcomputing.cpu_model_minimal": "CPU (Minimal)",
   "item.ironcomputing.cpu_model_wasip1": "CPU (Wasip1)",
@@ -10,6 +11,7 @@
   "item.ironcomputing.ram_size_32": "RAM (2mB)",
   "item.ironcomputing.ram_size_64": "RAM (4mB)",
   "item.ironcomputing.ram_size_128": "RAM (8mB)",
+  "item.ironcomputing.rom": "ROM (Read-only Memory)",
 
   "tabs.ironcomputing.components": "IronComputing Components",
   "container.ironcomputing.computer_case": "Computer Case"

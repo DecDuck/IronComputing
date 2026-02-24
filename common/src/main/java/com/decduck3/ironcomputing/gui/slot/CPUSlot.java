@@ -16,7 +16,7 @@ public class CPUSlot extends Slot {
     }
 
     @Override
-    public int getMaxStackSize(ItemStack stack) {
+    public int getMaxStackSize() {
         return 1;
     }
 }

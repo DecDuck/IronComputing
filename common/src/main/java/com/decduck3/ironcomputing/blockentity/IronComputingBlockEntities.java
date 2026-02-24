@@ -23,6 +23,7 @@ public class IronComputingBlockEntities {
     private static final DeferredRegister<BlockEntityType<?>> BLOCK_ENTITY_TYPES = DeferredRegister.create(IronComputing.MOD_ID, Registries.BLOCK_ENTITY_TYPE);
 
     public static RegistrySupplier<BlockEntityType<Computer>> COMPUTER_BLOCK_ENTITY_TYPE;
+    public static RegistrySupplier<BlockEntityType<FirmwareStation>> FIRMWARE_STATION_ENTITY_TYPE;
 
     public static void initRegistry() {
         BLOCK_ENTITY_TYPES.register();

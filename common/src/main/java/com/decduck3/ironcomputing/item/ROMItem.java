@@ -1,5 +1,7 @@
 package com.decduck3.ironcomputing.item;
 
+import com.decduck3.ironcomputing.IronComputing;
+import com.decduck3.ironcomputing.tabs.IronComputingTabs;
 import net.minecraft.ChatFormatting;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
@@ -13,14 +15,14 @@ import java.util.List;
 
 public class ROMItem extends Item {
     public ROMItem() {
-        super(new Properties());
+        super(IronComputingItems.baseProperties().arch$tab(IronComputingTabs.COMPONENTS_TAB));
     }
 
     @Override
     public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> tooltipComponents, TooltipFlag isAdvanced) {
-        CompoundTag tag = stack.getTagElement("romId");
+        CompoundTag tag = stack.getTag();
         if (tag != null) {
-            String romId = tag.getAsString();
+            String romId = tag.getString("romId");
             tooltipComponents.add(Component.literal(romId).withStyle(ChatFormatting.ITALIC).withStyle(ChatFormatting.DARK_GRAY));
         }
         super.appendHoverText(stack, level, tooltipComponents, isAdvanced);

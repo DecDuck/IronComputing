@@ -1,7 +1,8 @@
-package com.decduck3.ironcomputing.gui;
+package com.decduck3.ironcomputing.gui.computer;
 
 import com.decduck3.ironcomputing.IronComputing;
 import com.decduck3.ironcomputing.blockentity.Computer;
+import com.decduck3.ironcomputing.gui.IronComputingMenuTypes;
 import com.decduck3.ironcomputing.state.CCInvLayout;
 import net.minecraft.world.Container;
 import net.minecraft.world.SimpleContainer;

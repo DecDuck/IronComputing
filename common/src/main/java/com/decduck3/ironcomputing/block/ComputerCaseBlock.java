@@ -22,47 +22,9 @@ import org.jetbrains.annotations.Nullable;
 
 import java.io.IOException;
 
-public class ComputerCaseBlock extends BaseEntityBlock implements InteractionEvent.RightClickBlock {
+public class ComputerCaseBlock extends UIBlockEntityBlock<Computer> {
     public ComputerCaseBlock() {
-        super(IronComputingBlocks.baseProperties());
-
-        InteractionEvent.RIGHT_CLICK_BLOCK.register(this);
+        super(IronComputingBlocks.baseProperties(), (Computer::new));
     }
 
-    @Override
-    public @Nullable BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
-        return new Computer(pos, state);
-    }
-
-    @Override
-    public @NotNull RenderShape getRenderShape(BlockState state) {
-        return RenderShape.MODEL;
-    }
-
-    @Override
-    public EventResult click(Player player, InteractionHand interactionHand, BlockPos blockPos, Direction direction) {
-        BlockEntity entity = player.level().getBlockEntity(blockPos);
-        if (!(entity instanceof Computer blockEntity)) {
-            return EventResult.pass();
-        }
-        if (player.isShiftKeyDown()) {
-            return EventResult.pass();
-        }
-
-        player.openMenu(blockEntity);
-
-        return EventResult.interruptTrue();
-    }
-
-    @Override
-    public void onRemove(BlockState state, Level level, BlockPos pos, BlockState newState, boolean movedByPiston) {
-        BlockEntity entity = level.getBlockEntity(pos);
-        if (!(entity instanceof Computer blockEntity)) {
-            return;
-        }
-
-        Containers.dropContents(level, pos, blockEntity);
-
-        super.onRemove(state, level, pos, newState, movedByPiston);
-    }
 }

@@ -15,21 +15,27 @@ import net.minecraft.world.level.block.state.BlockBehaviour;
 import java.util.function.Supplier;
 
 import static com.decduck3.ironcomputing.block.IronComputingBlocks.COMPUTER_CASE_BLOCK;
+import static com.decduck3.ironcomputing.block.IronComputingBlocks.FIRMWARE_STATION_BLOCK;
 
 public class IronComputingItems {
     private static final DeferredRegister<Item> ITEMS = DeferredRegister.create(IronComputing.MOD_ID, Registries.ITEM);
 
     public static RegistrySupplier<Item> COMPUTER_CASE_BLOCKITEM;
+    public static RegistrySupplier<Item> FIRMWARE_STATION_BLOCKITEM;
+    public static RegistrySupplier<ROMItem> ROM_ITEM;
 
     public static void init() {
         COMPUTER_CASE_BLOCKITEM = registerItem("computer_case", () -> new BlockItem(COMPUTER_CASE_BLOCK.get(), baseProperties().arch$tab(IronComputingTabs.COMPONENTS_TAB)));
+        FIRMWARE_STATION_BLOCKITEM = registerItem("firmware_station", () -> new BlockItem(FIRMWARE_STATION_BLOCK.get(), baseProperties().arch$tab(IronComputingTabs.COMPONENTS_TAB)));
 
-        for(CPUItem.CPUGenData cpuData : CPUItem.CPUS) {
+        for (CPUItem.CPUGenData cpuData : CPUItem.CPUS) {
             registerItem(cpuData.getItemId(), () -> new CPUItem(cpuData));
         }
-        for(RAMItem.RAMGenData ramData : RAMItem.RAMS) {
+        for (RAMItem.RAMGenData ramData : RAMItem.RAMS) {
             registerItem(ramData.getItemId(), () -> new RAMItem(ramData));
         }
+
+        ROM_ITEM = registerItem("rom", ROMItem::new);
 
         ITEMS.register();
     }

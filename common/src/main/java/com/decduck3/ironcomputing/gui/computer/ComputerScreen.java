@@ -1,4 +1,4 @@
-package com.decduck3.ironcomputing.gui;
+package com.decduck3.ironcomputing.gui.computer;
 
 import com.decduck3.ironcomputing.IronComputing;
 import com.mojang.blaze3d.systems.RenderSystem;
